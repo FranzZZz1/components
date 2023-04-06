@@ -1,0 +1,7 @@
+node_modules
+card.html
+_card.scss
+package-lock.json
+dist
+fonts.scss
+package.json

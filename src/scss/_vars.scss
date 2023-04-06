@@ -1,0 +1,52 @@
+/* ---------- Z-INDEX задается только с помощью переменных  ---------- */
+$ui-index-1: 1; // для наползающих элементов в общем потоке
+$ui-index-2: 2; // для наползающих элементов в общем потоке
+$ui-index-3: 3; // для масок(затемнение, блюр)
+$ui-index-4: 4; // для сайдбаров
+$ui-index-5: 5; // для модальных окон
+$ui-index-6: 6; // для элементов, перекрывающих все
+/* ------------------------------------------------------------------- */
+
+/* ---------- COLORS  ---------- */
+$accent: #ffffff;
+$secondary: #ffffff;
+/* ----------------------------- */
+
+/* ---------- SIZES ---------- */
+$index: calc(1vw + 1vh);
+$size: 0px; // 4-8-12-16-20...
+/* --------------------------- */
+
+/* ---------- BREAKPOINTS ---------- */
+$ui-media-retina: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
+
+$ui-mobile: "screen and (max-width: 47.9625em)";
+$ui-mobile-min: "screen and (min-width: 22.5em)";
+$ui-mobile-interval: "(min-width: 22.5em) and (max-width: 47.9625em)";
+
+$ui-tablet: "screen and (max-width: 63.9625em)";
+$ui-mobile-min: "screen and (min-width: 48em)";
+$ui-mobile-interval: "(min-width: 48em) and (max-width: 63.9625em)";
+
+$ui-desktop: "screen and (max-width: 79.9625em)";
+$ui-desktop-min: "screen and (min-width: 64em)";
+$ui-desktop-interval: "(min-width: 64em) and (max-width: 79.9625em)";
+
+$ui-desktop-lg-min: "screen and (min-width: 80em)";
+/* --------------------------------- */
+
+/* ---------- DEFICE DEFINITION --------- */
+$ui-mouse-device: "(hover: hover) and (pointer: fine)";
+$ui-touch-device: "(hover: none) and (pointer: coarse)";
+/* -------------------------------------- */
+
+/* ---------- Hover only for PC  ---------- */
+.forexample {
+    background-color: red;
+    &:hover {
+        @media #{$ui-mouse-device} {
+            background-color: black;
+        }
+    }
+}
+/* ---------------------------------------- */

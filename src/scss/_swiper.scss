@@ -1,0 +1,31 @@
+@import "../../node_modules/swiper/swiper.scss";
+.swiper {
+    max-width: 400px;
+    max-height: 300px;
+}
+
+.swiper-wrapper {
+    padding-top: 40px;
+}
+
+.swiper-slide img {
+    display: flex;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 200px;
+}
+
+// автоширина
+.image-slider .swiper-slide {
+    width: auto;
+}
+
+//мультирядность
+// .image-slider {
+//   height: 200px;
+// }
+
+// .image-slider .swiper-slide {
+// 	height: calc((100% - 30px) / 2);
+// 	overflow: hidden;
+// }

@@ -1,0 +1,26 @@
+@import "fonts";
+@import "_vars";
+@import "_global";
+@import "_reset";
+@import "_libs";
+@import "_swiper";
+@import "_card" ;
+
+/* ---------- MARGIN ONLY TOP/LEFT ---------- */
+
+/* Delete this styles, it's only example */
+
+
+.text {
+    display: flex;
+    line-height: 175%; /* 42/24 */
+    font-size: 2.125rem;
+}
+
+/* COLUMNS */
+ $columns-count: 5;
+
+ .col-1 {
+	/* 1/5 часть ширины экрана */
+	width: calc(100% / $columns-count * 1);
+ }
