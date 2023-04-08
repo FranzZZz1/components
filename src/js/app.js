@@ -1,4 +1,4 @@
 import * as flsFunctions from "./modules/functions.js";
-import "./swiper.js"
+import "./modules/swiper.js"
 
 flsFunctions.isWebp();
