@@ -1,23 +1,36 @@
-/* ---------- Z-INDEX задается только с помощью переменных  ---------- */
+/* ------- MAIN ------- */
+
+$self: &;
+
+/* -------------------- */
+
+/* ---------- COLORS  ---------- */
+
+$accent: #ffffff;
+$secondary: #ffffff;
+
+/* ----------------------------- */
+
+/* ---------- SIZES ---------- */
+
+$index: calc(1vw + 1vh);
+$size: 0px; // 4-8-12-16-20...
+
+/* --------------------------- */
+
+/* ----- Z-INDEX ----- */
+
 $ui-index-1: 1; // для наползающих элементов в общем потоке
 $ui-index-2: 2; // для наползающих элементов в общем потоке
 $ui-index-3: 3; // для масок(затемнение, блюр)
 $ui-index-4: 4; // для сайдбаров
 $ui-index-5: 5; // для модальных окон
 $ui-index-6: 6; // для элементов, перекрывающих все
-/* ------------------------------------------------------------------- */
 
-/* ---------- COLORS  ---------- */
-$accent: #ffffff;
-$secondary: #ffffff;
-/* ----------------------------- */
-
-/* ---------- SIZES ---------- */
-$index: calc(1vw + 1vh);
-$size: 0px; // 4-8-12-16-20...
-/* --------------------------- */
+/* ------------------- */
 
 /* ---------- BREAKPOINTS ---------- */
+
 $ui-media-retina: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
 
 $ui-mobile: "screen and (max-width: 47.9625em)";
@@ -33,20 +46,46 @@ $ui-desktop-min: "screen and (min-width: 64em)";
 $ui-desktop-interval: "(min-width: 64em) and (max-width: 79.9625em)";
 
 $ui-desktop-lg-min: "screen and (min-width: 80em)";
+
 /* --------------------------------- */
 
-/* ---------- DEFICE DEFINITION --------- */
+/* ---------- DEVICE DEFINITION --------- */
+
 $ui-mouse-device: "(hover: hover) and (pointer: fine)";
 $ui-touch-device: "(hover: none) and (pointer: coarse)";
+
 /* -------------------------------------- */
 
 /* ---------- Hover only for PC  ---------- */
+
 .forexample {
     background-color: red;
-    &:hover {
-        @media #{$ui-mouse-device} {
+    @media #{$ui-mouse-device} {
+        &:hover {
             background-color: black;
         }
     }
 }
+
 /* ---------------------------------------- */
+
+/* ---------- COLUMNS ---------- */
+
+$columns-count: 5;
+
+.col-1 {
+    /* 1/5 часть ширины экрана */
+    width: calc(100% / $columns-count * 1);
+}
+
+/* ------------------------------ */
+
+/** Px to rem function
+
+@function rem($px, $default: 16) {
+    @return calc(($px / $default) * 1rem);
+}
+
+- Use: rem(16)
+
+**/

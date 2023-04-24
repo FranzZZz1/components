@@ -1,0 +1,171 @@
+.accordion__horizontal {
+    width: min(calc(100% - 2rem), 72rem);
+    font-family: "Urbanist";
+}
+.accordion {
+    --_button-size: 3rem;
+    --_button-gap: 1rem;
+    --_panel-padding: 0.75rem;
+
+    $self: &;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    contain: content;
+
+    @media (min-width: 56.25em) {
+        flex-direction: row;
+        block-size: 30rem;
+    }
+
+    &__panel {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: var(--_panel-padding);
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        margin: 0.5rem;
+        flex-basis: calc(var(--_button-size) + (var(--_panel-padding) * 2));
+        padding: var(--_panel-padding);
+        padding-inline-end: clamp(
+            0.75rem,
+            -2.063rem + 9vw,
+            calc(var(--_panel-padding) * 4)
+        );
+        cursor: pointer;
+        color: hsl(var(--gray-1-hsl));
+        border-radius: calc(
+            (var(--_button-size) + (var(--_panel-padding) * 2)) / 2
+        );
+        transition: flex-basis 0.5s, flex-grow 0.5s;
+
+        &:is(:focus-within) {
+            outline: 3px solid hsl(var(--purple-3-hsl));
+            outline-offset: 4px;
+        }
+
+        &:has([aria-expanded="true"]) {
+            flex-basis: clamp(16rem, 40vh, 20rem);
+            flex-grow: 1;
+
+            #{$self}__content {
+                transform: translateY(0);
+                opacity: 1;
+                transition: transform 0.5s 0.5s, opacity 0.5s 0.5s;
+            }
+
+            #{$self}__img {
+                filter: brightness(0.5);
+            }
+        }
+
+        // .is-open asfallback for not supporting :has
+        @supports not selector(:has(*)) {
+            &.is-open {
+                flex-basis: clamp(16rem, 40vh, 20rem);
+                flex-grow: 1;
+
+                #{$self}__content {
+                    transform: translateY(0);
+                    opacity: 1;
+                    transition: transform 0.5s 0.5s, opacity 0.5s 0.5s;
+                }
+
+                #{$self}__img {
+                    filter: brightness(0.5);
+                }
+            }
+        }
+    }
+
+    &__trigger {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        gap: var(--_button-gap);
+        inline-size: max-content;
+        padding: 0;
+        font-size: 1.125rem;
+        background-color: transparent;
+        outline: 0;
+    }
+
+    &__icon {
+        flex-grow: 0;
+        flex-shrink: 0;
+        padding: 0.5rem;
+        width: var(--_button-size);
+        height: 100%;
+        aspect-ratio: 1;
+        background-color: hsl(var(--gray-9-hsl) / 80%);
+        border-radius: 50%;
+        color: hsl(var(--purple-3-hsl));
+        stroke-width: 3;
+        stroke-linecap: round;
+        z-index: 1;
+
+        [aria-expanded="true"] & {
+            rotate: 180deg;
+            transition: rotate 0.5s;
+            transition-timing-function: cubic-bezier(0.05, 0.61, 0.41, 0.95);
+        }
+    }
+
+    &__title {
+        position: relative;
+        isolation: isolate;
+        display: grid;
+        align-items: center;
+        color: hsl(var(--gray-1-hsl));
+
+        @media (max-width: 56.1875em) {
+            &::after {
+                content: "";
+                position: absolute;
+                inset-inline-start: calc(
+                    (var(--_button-size) + var(--_button-gap)) * -1
+                );
+                z-index: -1;
+                block-size: var(--_button-size);
+                inline-size: calc(100% + (var(--_button-size) * 2));
+                border-radius: 100vh;
+                background-color: hsl(var(--gray-9-hsl) / 70%);
+            }
+        }
+    }
+
+    &__content {
+        padding-inline-start: clamp(
+            0.75rem,
+            -3.313rem + 13vw,
+            calc(var(--_button-size) + var(--_button-gap))
+        );
+        transform: translateY(
+            calc(var(--_button-size) + var(--_panel-padding))
+        );
+        opacity: 0;
+
+        > p {
+            font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1.125rem);
+        }
+    }
+
+    &__img {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: filter 0.5s;
+        transition-timing-function: cubic-bezier(0.05, 0.61, 0.41, 0.95);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            transition: none;
+        }
+    }
+}

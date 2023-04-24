@@ -48,19 +48,19 @@ import "swiper/css/zoom";
 const swiper = new Swiper(".swiper", {
     direction: "horizontal",
 
-	effect: "slide",
+    effect: "slide",
     //бесконечный слайдер
     loop: false,
 
     speed: 300,
 
-	// Navigation arrows
-	navigation: {
-		enabled: true,
-		nextEl: ".swiper-button-next",
-		prevEl: ".swiper-button-prev",
-	},
-	
+    // Navigation arrows
+    navigation: {
+        enabled: true,
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+
     // If we need pagination
     pagination: {
         el: ".swiper-pagination",
@@ -119,8 +119,8 @@ const swiper = new Swiper(".swiper", {
         //управление клавишами pageup/down
         pageUpDown: true,
     },
-	
-     //mousewheel
+
+    //mousewheel
     mousewheel: {
         // enabled: false,
         sensitivity: 1,
@@ -129,16 +129,16 @@ const swiper = new Swiper(".swiper", {
         // eventsTarget: '.image-slider'
     },
     on: {
-        slideChange: function() {
+        slideChange: function () {
             setTimeout(function () {
                 swiper.params.mousewheel.releaseOnEdges = false;
             }, 500);
         },
-        reachEnd: function() {
+        reachEnd: function () {
             setTimeout(function () {
                 swiper.params.mousewheel.releaseOnEdges = true;
             }, 750);
-        }
+        },
     },
 
     //автовысота
